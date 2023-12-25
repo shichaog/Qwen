@@ -69,7 +69,7 @@ torchrun $DISTRIBUTED_ARGS finetune.py \
     --lr_scheduler_type "cosine" \
     --logging_steps 1 \
     --report_to "none" \
-    --model_max_length 512 \
+    --model_max_length 4096 \
     --gradient_checkpointing True \
     --lazy_preprocess True \
     --deepspeed finetune/ds_config_zero3.json
