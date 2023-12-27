@@ -215,9 +215,6 @@ class LazySupervisedDataset(Dataset):
         self.cached_data_dict = {}
 
     def __len__(self):
-        rank0_print("dataset len:",len(self.raw_data))
-        rank0_print("\ndataset 0:",self.raw_data[0])
-        rank0_print("\ndataset last:",self.raw_data[-1])
         return len(self.raw_data)
 
     def __getitem__(self, i) -> Dict[str, torch.Tensor]:
