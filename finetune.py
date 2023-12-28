@@ -162,10 +162,12 @@ def preprocess(
                 raise NotImplementedError
             target += _target
         assert len(input_id) == len(target)
+        print("len(target)", len(target))
         input_id += [tokenizer.pad_token_id] * (max_len - len(input_id))
         target += [IGNORE_TOKEN_ID] * (max_len - len(target))
         input_ids.append(input_id[:max_len])
         targets.append(target[:max_len])
+    print("len", len(input_ids), len(targets))
     input_ids = torch.tensor(input_ids, dtype=torch.int)
     targets = torch.tensor(targets, dtype=torch.int)
 
@@ -220,8 +222,8 @@ class LazySupervisedDataset(Dataset):
     def __getitem__(self, i) -> Dict[str, torch.Tensor]:
         if i in self.cached_data_dict:
             return self.cached_data_dict[i]
-        print(i, self.raw_data[i]["conversations"])
         ret = preprocess([self.raw_data[i]["conversations"]], self.tokenizer, self.max_len)
+        print(ret)
         ret = dict(
             input_ids=ret["input_ids"][0],
             labels=ret["labels"][0],
