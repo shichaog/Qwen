@@ -161,12 +161,12 @@ def preprocess(
             else:
                 raise NotImplementedError
             target += _target
-        assert len(input_id) == len(target)
-        print("len(target)", len(target))
-        input_id += [tokenizer.pad_token_id] * (max_len - len(input_id))
-        target += [IGNORE_TOKEN_ID] * (max_len - len(target))
-        input_ids.append(input_id[:max_len])
-        targets.append(target[:max_len])
+            assert len(input_id) == len(target)
+            print("len(target)", len(target))
+            input_id += [tokenizer.pad_token_id] * (max_len - len(input_id))
+            target += [IGNORE_TOKEN_ID] * (max_len - len(target))
+            input_ids.append(input_id[:max_len])
+            targets.append(target[:max_len])
     print("len", len(input_ids), len(targets))
     input_ids = torch.tensor(input_ids, dtype=torch.int)
     targets = torch.tensor(targets, dtype=torch.int)
