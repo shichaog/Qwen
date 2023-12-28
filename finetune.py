@@ -221,7 +221,7 @@ class LazySupervisedDataset(Dataset):
     def __getitem__(self, i) -> Dict[str, torch.Tensor]:
         if i in self.cached_data_dict:
             return self.cached_data_dict[i]
-
+        print(i, self.raw_data[i]["conversations"])
         ret = preprocess([self.raw_data[i]["conversations"]], self.tokenizer, self.max_len)
         ret = dict(
             input_ids=ret["input_ids"][0],
