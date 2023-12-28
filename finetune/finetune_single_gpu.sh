@@ -59,7 +59,7 @@ python finetune.py \
   --model_max_length 4096 \
   --lazy_preprocess True \
   --gradient_checkpointing \
-  --deepspeed finetune/ds_config_zero2.json
+  --deepspeed finetune/ds_config_zero3.json
 
 # If you use fp16 instead of bf16, you should use deepspeed
 # --fp16 True --deepspeed finetune/ds_config_zero2.json
