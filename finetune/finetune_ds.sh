@@ -21,7 +21,7 @@ NODE_RANK=0
 MASTER_ADDR=127.0.0.1
 
 # The port for communication
-MASTER_PORT=-6001
+MASTER_PORT=6001
 
 MODEL="Qwen/Qwen-7B" # Set the path if you do not want to load from huggingface directly
 # ATTENTION: specify the path to your training data, which should be a json file consisting of a list of conversations.
