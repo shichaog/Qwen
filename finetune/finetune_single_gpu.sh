@@ -36,7 +36,7 @@ done
 
 export CUDA_VISIBLE_DEVICES=0
 
-torchrun --standalone --nnodes=1 --nproc_per_node=2 python finetune.py \
+torchrun --standalone --nnodes=1 --nproc_per_node=2 finetune.py \
   --model_name_or_path $MODEL \
   --data_path $DATA \
   --fp16 True \
