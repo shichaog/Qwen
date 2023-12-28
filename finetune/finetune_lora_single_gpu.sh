@@ -58,7 +58,7 @@ python finetune.py \
   --logging_steps 1 \
   --report_to "none" \
   --model_max_length 5000 \
-  --lazy_preprocess True \
+  --lazy_preprocess False \
   --gradient_checkpointing \
   --use_lora
 
