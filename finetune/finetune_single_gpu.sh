@@ -56,7 +56,7 @@ python finetune.py \
   --lr_scheduler_type "cosine" \
   --logging_steps 1 \
   --report_to "none" \
-  --model_max_length 4096 \
+  --model_max_length 2048 \
   --lazy_preprocess True \
   --gradient_checkpointing \
   --deepspeed finetune/ds_config_zero3.json
