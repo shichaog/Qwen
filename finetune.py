@@ -156,7 +156,7 @@ def preprocess(
 
         for j, sentence in enumerate(source):
             role = roles[sentence["from"]]
-            _input_id = [im_start] + tokenizer(role).input_ids + nl_tokens + \
+            _input_id = tokenizer(role).input_ids + nl_tokens + \
                 tokenizer(sentence["value"]).input_ids + [im_end] + nl_tokens
             if role == '<|im_start|>user':
                 _target = [im_start] + [IGNORE_TOKEN_ID] * (len(_input_id)-3) + [im_end] + nl_tokens
