@@ -49,7 +49,7 @@ python finetune.py \
   --gradient_accumulation_steps 8 \
   --evaluation_strategy "no" \
   --save_strategy "steps" \
-  --save_steps 1000 \
+  --save_steps 100 \
   --save_total_limit 10 \
   --learning_rate 3e-4 \
   --weight_decay 0.1 \
@@ -58,8 +58,8 @@ python finetune.py \
   --lr_scheduler_type "cosine" \
   --logging_steps 1 \
   --report_to "none" \
-  --model_max_length 512 \
-  --lazy_preprocess True \
+  --model_max_length 4096 \
+  --lazy_preprocess False \
   --gradient_checkpointing \
   --use_lora \
   --q_lora \
