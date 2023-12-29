@@ -148,11 +148,14 @@ def preprocess(
         input_id += system
         target += [im_start] + [IGNORE_TOKEN_ID] * (len(system)-3) + [im_end] + nl_tokens
         assert len(input_id) == len(target)
+
+        input_ids.append(input_id[:max_len])
+        targets.append(target[:max_len])
+
         for j, sentence in enumerate(source):
             role = roles[sentence["from"]]
-            _input_id = tokenizer(role).input_ids + nl_tokens + \
+            _input_id = [im_start] + tokenizer(role).input_ids + nl_tokens + \
                 tokenizer(sentence["value"]).input_ids + [im_end] + nl_tokens
-            input_id += _input_id
             if role == '<|im_start|>user':
                 _target = [im_start] + [IGNORE_TOKEN_ID] * (len(_input_id)-3) + [im_end] + nl_tokens
             elif role == '<|im_start|>assistant':
@@ -160,13 +163,10 @@ def preprocess(
                     _input_id[len(tokenizer(role).input_ids)+1:-2] + [im_end] + nl_tokens
             else:
                 raise NotImplementedError
-            target += _target
-            assert len(input_id) == len(target)
-            input_id += [tokenizer.pad_token_id] * (max_len - len(input_id))
-            target += [IGNORE_TOKEN_ID] * (max_len - len(target))
-            input_ids.append(input_id[:max_len])
-            targets.append(target[:max_len])
-    print("len", len(input_ids), len(targets))
+            assert len(_input_id) == len(_target)
+
+            input_ids.append(_input_id[:max_len])
+            targets.append(_target[:max_len])
     input_ids = torch.tensor(input_ids, dtype=torch.int)
     targets = torch.tensor(targets, dtype=torch.int)
 
