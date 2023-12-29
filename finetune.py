@@ -126,7 +126,7 @@ def preprocess(
     sources,
     tokenizer: transformers.PreTrainedTokenizer,
     max_len: int,
-    system_message: str = "You are a helpful assistant."
+    system_message: str = "你是一个AI网文写作小说助手，可以根据简短描述生成一个网络小说的故事情节发展，此外还能给出章节的标题，并根据章节标题撰写内容"
 ) -> Dict:
     roles = {"user": "<|im_start|>user", "assistant": "<|im_start|>assistant"}
 
