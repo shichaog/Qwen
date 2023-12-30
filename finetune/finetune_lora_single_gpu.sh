@@ -56,7 +56,7 @@ python finetune.py \
   --warmup_ratio 0.01 \
   --lr_scheduler_type "cosine" \
   --logging_steps 1 \
-  --report_to "none" \
+  --report_to "wandb" \
   --model_max_length 4096 \
   --lazy_preprocess False \
   --gradient_checkpointing \
